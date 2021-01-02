@@ -27,6 +27,12 @@ public class FlowCountSortDriver {
         // 5 指定最终输出的数据的 kv 类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
+
+        // 加载自定义分区类
+        job.setPartitionerClass(ProvincePartitioner.class);
+        // 设置 Reducetask 个数
+        job.setNumReduceTasks(5);
+
         // 6 指定 job 的输入原始文件所在目录
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
