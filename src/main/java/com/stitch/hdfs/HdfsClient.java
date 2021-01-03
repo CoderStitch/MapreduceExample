@@ -61,7 +61,7 @@ public class HdfsClient {
         FileSystem fs = FileSystem.get(new
                 URI("hdfs://150.158.174.69:9000"), configuration, "ubuntu");
         // 2 执行删除
-        fs.delete(new Path("/ubuntu/output/flownum"), true);
+        fs.delete(new Path("/ubuntu/output/wordcount/part-r-00000"), true);
         // 3 关闭资源
         fs.close();
     }

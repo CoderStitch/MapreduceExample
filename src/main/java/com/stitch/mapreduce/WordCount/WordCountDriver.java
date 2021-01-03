@@ -14,16 +14,17 @@ public class WordCountDriver {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         // 输入输出路径需要根据自己电脑上实际的输入输出路径设置
-        args = new String[]{"/ubuntu/input/wordcount", "/ubuntu/output/wordcount"};
-        //System.setProperty("hadoop.home.dir", "D:\\hadoop-2.10.1");
-        //System.setProperty("HADOOP_USER_NAME", "ubuntu");
+        args = new String[]{"/ubuntu/input/wordcount", "/ubuntu/output/wordcount/out"};
+        System.setProperty("hadoop.home.dir", "D:\\codeSoftware\\hadoop-2.10.1");
+        System.setProperty("HADOOP_USER_NAME", "ubuntu");
         // 1 获取配置信息以及封装任务
         Configuration configuration = new Configuration();
 
-        //configuration.set("dfs.data.transfer.protection","integrity");
-        //configuration.set("mapreduce.framework.name", "yarn");
-        //configuration.set("fs.default.name", "hdfs://150.158.174.69:9000");
-        //configuration.set("mapreduce.app-submission.cross-platform", "true");
+        configuration.set("dfs.data.transfer.protection","integrity");
+        configuration.set("mapreduce.framework.name", "yarn");
+        configuration.set("fs.default.name", "hdfs://150.158.174.69:9000");
+        configuration.set("mapreduce.app-submission.cross-platform", "true");
+        configuration.set("yarn.resourcemanager.hostname","150.158.174.69");
 
         Job job = Job.getInstance(configuration);
         // 2 设置 jar 加载路径

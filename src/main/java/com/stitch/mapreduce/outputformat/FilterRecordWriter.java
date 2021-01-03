@@ -31,9 +31,8 @@ public class FilterRecordWriter extends RecordWriter<Text, NullWritable> {
         }
     }
     @Override
-    public void write(Text key, NullWritable value) throws
-            IOException, InterruptedException {
-// 判断是否包含“atguigu”输出到不同文件
+    public void write(Text key, NullWritable value) throws IOException, InterruptedException {
+        // 判断是否包含“atguigu”输出到不同文件
         if (key.toString().contains("atguigu")) {
             atguiguOut.write(key.toString().getBytes());
         } else {
